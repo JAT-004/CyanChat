@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "cyanchat",
+	"version": "0.0.0",
+	"name": "CyanChat",
+	"description": "You're lookin' at the future!",
+	"authors": [
+		"JAT"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/cyanchat/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"jat.jcc.CyanChat"
+		],
+		"client": [
+			"jat.jcc.client.CyanChatClient"
+		]
+	},
+	"mixins": [
+		"cyanchat.mixins.json",
+		{
+			"config": "cyanchat.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.6",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
