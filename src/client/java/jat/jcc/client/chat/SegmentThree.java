@@ -3,11 +3,11 @@ package jat.jcc.client.chat;
 import net.minecraft.network.chat.Component;
 
 public class SegmentThree implements ChatSegment {
-    private final Segment prefix;
-    private final Segment segment;
-    private final Segment suffix;
+    private final ChatSegment prefix;
+    private final ChatSegment segment;
+    private final ChatSegment suffix;
 
-    public SegmentThree(Segment prefix, Segment segment, Segment suffix) {
+    public SegmentThree(ChatSegment prefix, ChatSegment segment, ChatSegment suffix) {
         this.prefix = prefix;
         this.segment = segment;
         this.suffix = suffix;
