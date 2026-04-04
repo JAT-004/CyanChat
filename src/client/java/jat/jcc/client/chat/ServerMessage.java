@@ -8,18 +8,17 @@ import java.time.Instant;
 import java.util.List;
 
 public class ServerMessage extends ChatEntry {
-    private final MessageType type;
+    private final String typeKey;
 
-    public ServerMessage(Instant time, List<ChatSegment> segmentList, MessageType type) {
+    public ServerMessage(Instant time, List<ChatSegment> segmentList, String typeKey) {
         super(time, segmentList);
-        this.type = type;
+        this.typeKey = typeKey;
     }
 
     @Override
     public Component toComponent() {
-        if(type == null) return super.toComponent();
         ModConfig config = ConfigManager.get();
-        segmentList.addFirst(new SegmentThree(config.typePrefix, type, config.typeSuffix));
+        segmentList.addFirst(new SegmentThree(config.typePrefix, config.typeTable.get(typeKey), config.typeSuffix));
         return super.toComponent();
     }
 }
