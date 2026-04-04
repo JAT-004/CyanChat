@@ -1,6 +1,7 @@
 package jat.jcc.client.config;
 
 import jat.jcc.client.chat.MessageType;
+import jat.jcc.client.chat.Segment;
 import net.minecraft.ChatFormatting;
 
 import java.util.AbstractMap;
@@ -15,20 +16,12 @@ public class ModConfig {
     public ChatFormatting typeFormat = ChatFormatting.WHITE;
 
     public boolean showTime = true;
-    public String timePrefix = "[";
-    public ChatFormatting timePrefixFormat = ChatFormatting.GRAY;
-    public String timeSuffix = "] ";
-    public ChatFormatting timeSuffixFormat = ChatFormatting.GRAY;
-
-    public String playerPrefix = "[";
-    public ChatFormatting playerPrefixFormat = ChatFormatting.GRAY;
-    public String playerSuffix = "] ";
-    public ChatFormatting playerSuffixFormat = ChatFormatting.GRAY;
-
-    public String typePrefix = "";
-    public ChatFormatting typePrefixFormat = ChatFormatting.GRAY;
-    public String typeSuffix = "/ ";
-    public ChatFormatting typeSuffixFormat = ChatFormatting.GRAY;
+    public Segment timePrefix = new Segment("[", ChatFormatting.GRAY);
+    public Segment timeSuffix = new Segment("] ", ChatFormatting.GRAY);
+    public Segment playerPrefix = new Segment("[", ChatFormatting.GRAY);
+    public Segment playerSuffix = new Segment("] ", ChatFormatting.GRAY);
+    public Segment typePrefix = new Segment("", ChatFormatting.GRAY);
+    public Segment typeSuffix = new Segment("/ ", ChatFormatting.GRAY);
 
     public Map<String, MessageType> typeList = Map.ofEntries(
             new AbstractMap.SimpleEntry<String, MessageType>("home", new MessageType("HOME", ChatFormatting.BLUE))
