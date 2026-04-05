@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 /**
  * One message in chat made from one or multiple segments.
@@ -37,9 +38,11 @@ public class ChatEntry extends SegmentList {
      * Disables the time functionality if the time pattern is invalid.
      * This is possible since the pattern is defined within the config file by the user.
      *
+     * @param valueMap map with key value pairs for replacing placeholders
      * @return the component combined from all segments or null if empty
      */
-    public Component toComponent() {
+    @Override
+    public Component toComponent(@Nullable Map<String, String> valueMap) {
         ModConfig config = ConfigManager.get();
         if(config.showTime) try {
             if(isEmpty() || config.time == null) return null;
@@ -52,6 +55,6 @@ public class ChatEntry extends SegmentList {
             CyanChat.LOGGER.warn("invalid time pattern \"{}\", therefore showTime was set to false", config.time);
             // TODO display warn message in player chat
         }
-        return super.toComponent();
+        return super.toComponent(valueMap);
     }
 }

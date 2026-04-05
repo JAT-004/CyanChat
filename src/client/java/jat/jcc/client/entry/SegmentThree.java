@@ -4,6 +4,8 @@ import jat.jcc.client.chat.ComponentBuilder;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+
 /**
  * Combines a segment with an optional prefix and suffix.
  * <p>
@@ -42,11 +44,12 @@ public class SegmentThree implements ChatSegment {
     /**
      * Combines the prefix, primary and suffix segment or returns null if the primary is empty.
      *
+     * @param valueMap map with key value pairs for replacing placeholders
      * @return the component from prefix, center and suffix or null if empty
      */
     @Override
-    public Component toComponent() {
+    public Component toComponent(@Nullable Map<String, String> valueMap) {
         if(isEmpty()) return null;
-        return new ComponentBuilder().append(prefix).append(center).append(suffix).finish();
+        return new ComponentBuilder().replace(valueMap).append(prefix).append(center).append(suffix).finish();
     }
 }

@@ -5,6 +5,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+
 /**
  * Represents a simple segment with text and optional formatting.
  * <p>
@@ -65,10 +67,11 @@ public class Segment implements ChatSegment {
     /**
      * Builds the segment and applies the formatting, if present.
      *
+     * @param valueMap map with key value pairs for replacing placeholders
      * @return the component with formatting or null if the segment is empty
      */
     @Override
-    public Component toComponent() {
+    public Component toComponent(@Nullable Map<String, String> valueMap) {
         // return nothing when there is no text
         if(isEmpty()) return null;
         // use format when present

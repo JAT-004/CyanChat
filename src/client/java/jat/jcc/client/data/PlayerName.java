@@ -5,7 +5,9 @@ import jat.jcc.client.entry.ChatSegment;
 import jat.jcc.client.entry.Segment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.UUID;
 
 // TODO everything including custom rank, real rank, channel, nickname
@@ -23,8 +25,8 @@ public class PlayerName implements ChatSegment {
     }
 
     @Override
-    public Component toComponent() {
-        return new Segment(nickname == null ? name : nickname, format, ConfigManager.get().playerFormat).toComponent();
+    public Component toComponent(@Nullable Map<String, String> valueMap) {
+        return new Segment(nickname == null ? name : nickname, format, ConfigManager.get().playerFormat).toComponent(valueMap);
     }
 
     public String getName() {

@@ -3,8 +3,10 @@ package jat.jcc.client.entry;
 import jat.jcc.client.chat.ComponentBuilder;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Combines multiple segments into one.
@@ -41,13 +43,14 @@ public class SegmentList implements ChatSegment {
     /**
      * Builds all segments with formatting and combines them.
      *
+     * @param valueMap map with key value pairs for replacing placeholders
      * @return the component combined from all segments or null if empty
      */
     @Override
-    public Component toComponent() {
+    public Component toComponent(@Nullable Map<String, String> valueMap) {
         if(isEmpty()) return null;
         ComponentBuilder builder = new ComponentBuilder();
-        for(ChatSegment segment : segmentList) builder.append(segment);
+        for(ChatSegment segment : segmentList) builder.replace(valueMap).append(segment);
         return builder.finish();
     }
 }

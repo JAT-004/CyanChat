@@ -11,7 +11,7 @@ import java.util.Map;
 public class ModConfig {
     public ChatFormatting defaultFormat = ChatFormatting.GRAY;
 
-    public String commandCall = "#";
+    public String operatorCall = "#";
 
     public String time = "HH:mm";
     public ChatFormatting timeFormat = ChatFormatting.WHITE;
@@ -25,6 +25,8 @@ public class ModConfig {
     public Segment channelSuffix = new Segment("] ", ChatFormatting.GRAY);
     public Segment rankPrefix = new Segment("[", ChatFormatting.GRAY);
     public Segment rankSuffix = new Segment("] ", ChatFormatting.GRAY);
+    public Segment statusPrefix = new Segment("[", ChatFormatting.GRAY);
+    public Segment statusSuffix = new Segment("] ", ChatFormatting.GRAY);
     public Segment playerPrefix = new Segment("[", ChatFormatting.GRAY);
     public Segment playerSuffix = new Segment("] ", ChatFormatting.GRAY);
     public Segment typePrefix = new Segment("", ChatFormatting.GRAY);
@@ -35,6 +37,9 @@ public class ModConfig {
             new AbstractMap.SimpleEntry<>("private", new Segment("PRIVATE", ChatFormatting.LIGHT_PURPLE))
     ));
     public SegmentTable rankTable = new SegmentTable(Map.ofEntries(
+            new AbstractMap.SimpleEntry<>("admin", new Segment("ADMIN", ChatFormatting.RED))
+    ));
+    public SegmentTable statusTable = new SegmentTable(Map.ofEntries(
             new AbstractMap.SimpleEntry<>("admin", new Segment("ADMIN", ChatFormatting.RED))
     ));
     public SegmentTable typeTable = new SegmentTable(Map.ofEntries(
