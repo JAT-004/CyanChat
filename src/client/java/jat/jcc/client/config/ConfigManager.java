@@ -7,4 +7,8 @@ public class ConfigManager {
         if(config == null) config = new ModConfig();
         return config;
     }
+
+    public static void load() {}
+
+    public static void save() {}
 }

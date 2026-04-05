@@ -1,7 +1,7 @@
 package jat.jcc.client.config;
 
-import jat.jcc.client.chat.Segment;
-import jat.jcc.client.chat.SegmentTable;
+import jat.jcc.client.entry.Segment;
+import jat.jcc.client.data.SegmentTable;
 import net.minecraft.ChatFormatting;
 
 import java.util.AbstractMap;
@@ -28,7 +28,7 @@ public class ModConfig {
     public Segment playerPrefix = new Segment("[", ChatFormatting.GRAY);
     public Segment playerSuffix = new Segment("] ", ChatFormatting.GRAY);
     public Segment typePrefix = new Segment("", ChatFormatting.GRAY);
-    public Segment typeSuffix = new Segment("/ ", ChatFormatting.GRAY);
+    public Segment typeSuffix = new Segment("/  ", ChatFormatting.GRAY);
 
 
     public SegmentTable channelTable = new SegmentTable(Map.ofEntries(

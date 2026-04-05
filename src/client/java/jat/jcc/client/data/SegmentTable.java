@@ -1,4 +1,6 @@
-package jat.jcc.client.chat;
+package jat.jcc.client.data;
+
+import jat.jcc.client.entry.ChatSegment;
 
 import java.util.Map;
 

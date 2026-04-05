@@ -1,11 +1,15 @@
-package jat.jcc.client.chat;
+package jat.jcc.client.data;
 
 import jat.jcc.client.config.ConfigManager;
+import jat.jcc.client.entry.ChatSegment;
+import jat.jcc.client.entry.Segment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
 import java.util.UUID;
 
+// TODO everything including custom rank, real rank, channel, nickname
+// TODO separate chat representation from this data structure and move it to PlayerSegment
 public class PlayerName implements ChatSegment {
     private UUID uuid;
     public String name;
@@ -13,6 +17,12 @@ public class PlayerName implements ChatSegment {
     public ChatFormatting format;
     public String rank;
 
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
     public Component toComponent() {
         return new Segment(nickname == null ? name : nickname, format, ConfigManager.get().playerFormat).toComponent();
     }

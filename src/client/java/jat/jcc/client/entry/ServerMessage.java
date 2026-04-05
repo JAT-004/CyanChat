@@ -1,17 +1,16 @@
-package jat.jcc.client.chat;
+package jat.jcc.client.entry;
 
 import jat.jcc.client.config.ConfigManager;
 import jat.jcc.client.config.ModConfig;
 import net.minecraft.network.chat.Component;
 
 import java.time.Instant;
-import java.util.List;
 
 public class ServerMessage extends ChatEntry {
     private final String typeKey;
 
-    public ServerMessage(Instant time, List<ChatSegment> segmentList, String typeKey) {
-        super(time, segmentList);
+    public ServerMessage(Instant time, String typeKey, ChatSegment... segments) {
+        super(time, segments);
         this.typeKey = typeKey;
     }
 
