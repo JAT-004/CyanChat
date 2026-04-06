@@ -3,9 +3,14 @@ package jat.jcc.client.entry;
 import jat.jcc.client.config.ConfigManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Represents a simple segment with text and optional formatting.
@@ -14,8 +19,9 @@ import java.util.Map;
  * This is a design choice, it simplifies handling and configuration files.
  */
 public class Segment extends ChatSegment {
-    private final String text;
+    private String text;
     private final ChatFormatting format;
+    private final List<String> placeholderList;
 
     /**
      * Creates a segment from characters without formatting.
@@ -37,6 +43,8 @@ public class Segment extends ChatSegment {
     public Segment(@Nullable String text, @Nullable ChatFormatting format) {
         this.text = text;
         this.format = format;
+        this.placeholderList = new ArrayList<>();
+        if(text != null) locatePlaceholders();
     }
 
     /**
@@ -52,6 +60,27 @@ public class Segment extends ChatSegment {
      */
     public Segment(@Nullable String text, @Nullable ChatFormatting format, @Nullable ChatFormatting defaultFormat) {
         this(text, format != null ? format : defaultFormat);
+    }
+
+    /**
+     * Locates and saves placeholders within the segment based on a pattern.
+     */
+    private void locatePlaceholders() {
+        Pattern pattern = Pattern.compile("\\$\\(([^)]+)\\)");
+        Matcher matcher = pattern.matcher(text);
+        while(matcher.find()) placeholderList.add(matcher.group());
+    }
+
+    /**
+     * Replaces all placeholders, if any.
+     *
+     * @param valueMap map with key value pairs for replacing placeholders
+     */
+    private void replacePlaceholders(@NotNull Map<String, String> valueMap) {
+        for(String placeholder : placeholderList) {
+            String value = valueMap.get(placeholder);
+            if(value != null) text = text.replace(placeholder, value);
+        }
     }
 
     /**
@@ -74,6 +103,8 @@ public class Segment extends ChatSegment {
     public Component toComponent(@Nullable Map<String, String> valueMap) {
         // return nothing when there is no text
         if(isEmpty()) return null;
+        // replace placeholders if necessary
+        if(valueMap != null && !valueMap.isEmpty()) replacePlaceholders(valueMap);
         // use format when present
         if(format != null) return Component.literal(text).withStyle(format);
         // use default format when present

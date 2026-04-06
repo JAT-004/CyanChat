@@ -6,6 +6,6 @@ import net.minecraft.client.Minecraft;
 public class ChatDisplay {
     public static void show(ChatSegment message) {
         Minecraft client = Minecraft.getInstance();
-        client.gui.getChat().addMessage(message.toComponent(null));
+        client.gui.getChat().addMessage(message.toComponent());
     }
 }
