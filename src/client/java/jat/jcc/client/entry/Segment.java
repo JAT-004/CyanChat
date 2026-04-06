@@ -13,7 +13,7 @@ import java.util.Map;
  * Allows only one single formatting. It is not possible to combine, e.g. italic and a color.
  * This is a design choice, it simplifies handling and configuration files.
  */
-public class Segment implements ChatSegment {
+public class Segment extends ChatSegment {
     private final String text;
     private final ChatFormatting format;
 

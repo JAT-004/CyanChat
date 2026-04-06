@@ -13,7 +13,7 @@ import java.util.Map;
  * The prefix and suffix will also be dropped if the center segment is considered as empty.
  * Supports an empty String or even null for prefix and suffix.
  */
-public class SegmentThree implements ChatSegment {
+public class SegmentThree extends ChatSegment {
     private final ChatSegment prefix;
     private final ChatSegment center;
     private final ChatSegment suffix;

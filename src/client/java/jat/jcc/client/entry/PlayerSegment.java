@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 
 // TODO separate player segment from data structure player name
-public class PlayerSegment implements ChatSegment {
+public class PlayerSegment extends ChatSegment {
     private final PlayerName player;
 
     public PlayerSegment(PlayerName player) {

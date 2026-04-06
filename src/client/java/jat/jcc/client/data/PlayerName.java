@@ -12,7 +12,7 @@ import java.util.UUID;
 
 // TODO everything including custom rank, real rank, channel, nickname
 // TODO separate chat representation from this data structure and move it to PlayerSegment
-public class PlayerName implements ChatSegment {
+public class PlayerName extends ChatSegment {
     private UUID uuid;
     public String name;
     public String nickname;

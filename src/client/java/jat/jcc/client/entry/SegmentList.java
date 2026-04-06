@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Combines multiple segments into one.
  */
-public class SegmentList implements ChatSegment {
+public class SegmentList extends ChatSegment {
     protected final List<ChatSegment> segmentList;
 
     /**

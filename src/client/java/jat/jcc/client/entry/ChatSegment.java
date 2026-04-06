@@ -8,24 +8,25 @@ import java.util.Map;
 /**
  * Represents text with optional formatting.
  */
-public interface ChatSegment {
+public abstract class ChatSegment {
     /**
      * Returns true if the segment should not be displayed.
      *
      * @return true if the segment should not be displayed
      */
-    boolean isEmpty();
+    public abstract boolean isEmpty();
 
 
     /**
      * Builds the segment and applies all formatting, if any.
+     * <p>
+     * Does not replace placeholders.
      *
      * @return the component with all formatting or null if the segment is empty
-     *//*
-    Component toComponent() {
-        toComponent(null);
-    }; // TODO make this an abstract class?
-    */
+     */
+    public final Component toComponent() {
+        return toComponent(null);
+    }
 
 
     /**
@@ -36,5 +37,5 @@ public interface ChatSegment {
      * @param valueMap map with key value pairs for replacing the placeholders
      * @return the component with all formatting or null if the segment is empty
      */
-    Component toComponent(@Nullable Map<String, String> valueMap);
+    public abstract Component toComponent(@Nullable Map<String, String> valueMap);
 }
