@@ -48,4 +48,8 @@ public class ModConfig {
 
     public List<String> serverMessageBlacklist = List.of();
     public List<String> playerMessageBlacklist = List.of();
+
+    public SegmentTable modMessage = new SegmentTable(Map.ofEntries(
+            new AbstractMap.SimpleEntry<>("admin", new Segment("ADMIN", ChatFormatting.RED))
+    ));
 }

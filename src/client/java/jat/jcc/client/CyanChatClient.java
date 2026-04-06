@@ -2,6 +2,8 @@ package jat.jcc.client;
 
 import jat.jcc.client.chat.ChatReceiver;
 import jat.jcc.client.chat.ChatSender;
+import jat.jcc.client.config.ConfigManager;
+import jat.jcc.client.config.ModConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents;
@@ -14,6 +16,7 @@ public class CyanChatClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+        ModConfig config = ConfigManager.get();
 
         ClientSendMessageEvents.ALLOW_CHAT.register((message) -> {
             // process own messages before sending
