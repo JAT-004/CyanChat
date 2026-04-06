@@ -1,6 +1,6 @@
 package jat.jcc.client.entry;
 
-import jat.jcc.client.data.PlayerName;
+import jat.jcc.client.data.PlayerData;
 import jat.jcc.client.config.ConfigManager;
 import jat.jcc.client.config.ModConfig;
 import net.minecraft.network.chat.Component;
@@ -10,11 +10,11 @@ import java.time.Instant;
 import java.util.Map;
 
 public class PlayerMessage extends ChatEntry {
-    private final PlayerName player;
+    private final PlayerSegment player;
 
-    public PlayerMessage(Instant time, PlayerName player, ChatSegment... segments) {
+    public PlayerMessage(Instant time, PlayerData player, ChatSegment... segments) {
         super(time, segments);
-        this.player = player;
+        this.player = new PlayerSegment(player);
     }
 
     @Override

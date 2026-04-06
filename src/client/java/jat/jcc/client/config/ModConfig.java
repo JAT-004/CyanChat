@@ -1,5 +1,6 @@
 package jat.jcc.client.config;
 
+import jat.jcc.client.entry.PlayerSegment;
 import jat.jcc.client.entry.Segment;
 import jat.jcc.client.data.SegmentTable;
 import net.minecraft.ChatFormatting;
@@ -18,6 +19,16 @@ public class ModConfig {
     public ChatFormatting playerFormat = ChatFormatting.WHITE;
     public ChatFormatting typeFormat = ChatFormatting.WHITE;
 
+    public PlayerSegment.Sequence[] playerSequence = {
+            PlayerSegment.Sequence.RANK,
+            PlayerSegment.Sequence.STATUS,
+            PlayerSegment.Sequence.NAME,
+            PlayerSegment.Sequence.NICKNAME
+    };
+    public boolean showPlayerRank = true;
+    public boolean showPlayerStatus = true;
+    public boolean showPlayerNickname = true;
+
     public boolean showTime = true;
     public Segment timePrefix = new Segment("[", ChatFormatting.GRAY);
     public Segment timeSuffix = new Segment("] ", ChatFormatting.GRAY);
@@ -31,7 +42,6 @@ public class ModConfig {
     public Segment playerSuffix = new Segment("] ", ChatFormatting.GRAY);
     public Segment typePrefix = new Segment("", ChatFormatting.GRAY);
     public Segment typeSuffix = new Segment("/  ", ChatFormatting.GRAY);
-
 
     public SegmentTable channelTable = new SegmentTable(Map.ofEntries(
             new AbstractMap.SimpleEntry<>("private", new Segment("PRIVATE", ChatFormatting.LIGHT_PURPLE))

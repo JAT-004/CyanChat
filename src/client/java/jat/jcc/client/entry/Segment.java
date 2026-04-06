@@ -19,6 +19,8 @@ import java.util.regex.Pattern;
  * This is a design choice, it simplifies handling and configuration files.
  */
 public class Segment extends ChatSegment {
+    public static Segment EMPTY = new Segment(null);
+
     private String text;
     private final ChatFormatting format;
     private final List<String> placeholderList;
